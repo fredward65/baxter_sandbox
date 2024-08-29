@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <include>
+      <uri>model://grey_wall</uri>
+      <name>wall</name>
+      <static>true</static>
+      <pose>3.0 0.0 0.0 0.0 0.0 1.5708</pose>
+    </include>
+
+    <include>
+      <uri>model://disk_part</uri>
+      <name>target_1</name>
+      <static>true</static>
+      <pose>1.5 1.5 1.5 0.524 -1.2566 0.0</pose>
+      <!--   1.8849   -->
+    </include>
+
+    <include>
+      <uri>model://disk_part</uri>
+      <name>target_2</name>
+      <static>true</static>
+      <pose>2.5 -1.0 1.5 -0.524 -1.5708 0.0</pose>
+      <!--   1.2566   -->
+    </include>
+
+    <physics type="ode">
+      <real_time_update_rate>1000.0</real_time_update_rate>
+    </physics>
+
+    <gravity>
+      0.0 0.0 -9.80665
+    </gravity>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-4.0 3.0 4.5 0.0 0.524 -0.524</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>orthographic</projection_type>
+      </camera>
+    </gui>
+
+  </world>
+</sdf>

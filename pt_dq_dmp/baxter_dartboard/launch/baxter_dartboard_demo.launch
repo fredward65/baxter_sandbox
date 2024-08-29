@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+
+    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+
+    <!-- These arguments load the electric grippers, for example left_electric_gripper:=true -->
+    <arg name="left_electric_gripper" default="true"/>
+    <arg name="right_electric_gripper" default="true"/>
+
+    <!-- If you set this to false, you MUST have set the robot_description prior to launching baxter_world -->
+    <arg name="load_robot_description" default="true"/>
+
+    <!-- Baxter Dartboard World launch file -->
+    <include file="$(find  baxter_dartboard)/launch/baxter_dartboard_world.launch">
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="headless" value="$(arg headless)"/>
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="left_electric_gripper" value="$(arg left_electric_gripper)"/>
+        <arg name="right_electric_gripper" value="$(arg right_electric_gripper)"/>
+        <arg name="load_robot_description" value="$(arg load_robot_description)"/>
+    </include>
+
+    <!-- Start Joint Trajectory Action Server -->
+<!--    <node pkg="baxter_interface" type="joint_trajectory_action_server.py" name="joint_interface_action_server"-->
+<!--          respawn="true" output="screen"/>-->
+
+    <!-- Start Baxter Dartboard demo -->
+    <node pkg="baxter_dartboard" type="baxter_dartboard_demo.py" name="baxter_dartboard_demo"
+          required="true" output="screen"/>
+
+</launch>
