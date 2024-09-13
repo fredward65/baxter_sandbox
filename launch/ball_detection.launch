@@ -1,0 +1,10 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="target_id" default="0" />
+  <!-- Start the Ball Detector/Publisher Node -->
+  <node name="ball_detector_node" pkg="baxter_sandbox" type="ball_detector.py" required="true" output="screen" />
+  <!-- Run the Eyes Node -->
+  <node name="eye_drawing_node" pkg="baxter_sandbox" type="face_script.py" output="screen" args="-t $(arg target_id)" />
+  <!-- Run the Head Pan Node -->
+  <node name="head_pan_node" pkg="baxter_sandbox" type="head_pan.py" output="screen" args="-t $(arg target_id)" />
+</launch>
